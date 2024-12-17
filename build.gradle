@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.0'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //JPA를 이용한 SQL처리(개발시 적용)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //HTML에 타임리프로 명령어 적용
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    //스프링 웹개발 환경
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //getter와 setter를 자동화(실행시 적용)
+    compileOnly 'org.projectlombok:lombok'
+    //개발환경 지원(개발시에만 적용)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    //데이터베이스(실시간으로 적용)
+    runtimeOnly 'com.h2database:h2'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    //DTO와 Entity간의 변환
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
