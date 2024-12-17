@@ -59,4 +59,8 @@ public class BoardService {
         BoardDTO boardDTO = modelMapper.map(boardEntity, BoardDTO.class);
         return boardDTO;
     }
+
+    //접근자 전달자 메소드명(인수,...)
+    //전달자: 메소드에서 처리된 결과값을 전달
+    //인수 : 메소드에서 처리를 위한 값을 전달
 }
