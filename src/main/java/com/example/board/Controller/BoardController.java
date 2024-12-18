@@ -58,7 +58,7 @@ public class BoardController {
     //Form으로 전달시에는 get, post로 전달가능
     //그외는 get 전달
     @GetMapping("/read")
-    public String readProc(@PathVariable Integer id, Model model) {
+    public String readProc(@RequestParam Integer id, Model model) {
         log.info("개별읽기...");
         BoardDTO boardDTO = boardService.read(id); //전달자가 있으면 변수로 받는다.
 
